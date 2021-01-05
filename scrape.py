@@ -35,6 +35,7 @@ def check_and_send():
     for x in collection.find():
         print(x['url'])
         product_price,product_name = scrape_bare(x['url'])
+        collection.find_one_and_update({'url' : x['url']},{ '$push': {'price' : product_price}})
         print(product_price, product_name)
         subs = x['subscription']
         for sub in subs:
@@ -121,4 +122,4 @@ except:
     pass
 finally:
     print("Application ran sucessfully!!!")
-    driver.close()
+    # driver.close()
