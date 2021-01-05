@@ -11,6 +11,7 @@ from email.mime.multipart import MIMEMultipart
 from email.mime.text import MIMEText
 from pprint import pprint
 import json
+import sys
 
 load_dotenv()
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
@@ -114,6 +115,7 @@ def scrape_bare(url):
 try:
     check_and_send()
 except:
+    print("Oops!", sys.exc_info()[0], "occurred.")
     print("Selenium Error")
     pass
 finally:
