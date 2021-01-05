@@ -85,6 +85,7 @@ Happy Shopping ✨
 
 def scrape_product_with_link(link, reciever_email, reciever_name, target_price):
     driver.get(link)
+    driver.implicitly_wait(10)
     product_name = driver.title
     print(product_name)
 
